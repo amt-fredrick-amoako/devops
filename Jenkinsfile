@@ -29,19 +29,11 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                dir('labs') {
-                    sh "sudo cp target/labs-0.0.1-SNAPSHOT.war /opt/apache-tomcat-10.1.23/webapps"
-                }
-            }
-        }
-
         stage("Build docker image") {
             steps{
                 script{
                     sh "docker build -t javalabs/devops ."
-                    sh "docker run -p 8083:8083 javalabs/devops"
+                    sh "docker run --rm -p 8083:8083 -d javalabs/devops"
                 }
             }
         }
