@@ -1,4 +1,4 @@
-package com.amalitech.labs.labs;
+package com.amalitech.labs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
