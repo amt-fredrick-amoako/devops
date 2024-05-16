@@ -1,4 +1,4 @@
-package com.amalitech.labs.labs;
+package com.amalitech.labs.devopslabs;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -7,7 +7,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(LabsApplication.class);
+		return application.sources(DevopslabsApplication.class);
 	}
 
 }

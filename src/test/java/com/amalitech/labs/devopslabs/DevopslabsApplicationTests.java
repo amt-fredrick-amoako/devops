@@ -1,10 +1,10 @@
-package com.amalitech.labs.labs;
+package com.amalitech.labs.devopslabs;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LabsApplicationTests {
+class DevopslabsApplicationTests {
 
 	@Test
 	void contextLoads() {

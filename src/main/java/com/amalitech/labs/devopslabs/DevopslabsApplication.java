@@ -1,13 +1,13 @@
-package com.amalitech.labs.labs;
+package com.amalitech.labs.devopslabs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LabsApplication {
+public class DevopslabsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LabsApplication.class, args);
+		SpringApplication.run(DevopslabsApplication.class, args);
 	}
 
 }
