@@ -33,7 +33,7 @@ pipeline {
             steps{
                 script{
                     sh "docker build -t javalabs/devops ."
-                    sh "docker run --rm -p 8083:8083 -d javalabs/devops"
+                    sh "docker run --name devopslabs --rm -p 8083:8083 -d javalabs/devops"
                 }
             }
         }
