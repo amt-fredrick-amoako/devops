@@ -29,11 +29,19 @@ pipeline {
             }
         }
 
+        stage('Test') {
+            steps {
+                dir('labs') {
+                    sh "mvn test"
+                }
+            }
+        }
         stage("Build docker image") {
             steps{
                 script{
+                    sh "docker rm devopslabs"
                     sh "docker build -t javalabs/devops ."
-                    sh "docker run --name devopslabs --rm -p 8083:8083 -d javalabs/devops"
+                    sh "docker run --name devopslabs -p 8083:8083 -d javalabs/devops"
                 }
             }
         }
