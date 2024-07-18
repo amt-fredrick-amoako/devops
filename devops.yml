@@ -19,3 +19,17 @@ spec:
                   image: fredamoako/devops
                   ports:
                       - containerPort: 8083
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: devops-service
+spec:
+    selector:
+        app: devops
+    type: LoadBalancer
+    ports:
+        - protocol: TCP
+          port: 8083
+          targetPort: 8083
+          nodePort: 30000

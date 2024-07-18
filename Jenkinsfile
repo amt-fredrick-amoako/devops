@@ -33,7 +33,7 @@ pipeline {
                 }
             }
         }
-        stage('Build & Tage Docker Image') {
+        stage('Build & Tag Docker Image') {
             steps {
                 script{
                     withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
