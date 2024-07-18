@@ -3,45 +3,51 @@ pipeline {
 
     tools{
         jdk 'jdk'
-        maven 'maven-3'
+        maven 'maven3'
     }
-
     stages {
         stage('Git Checkout') {
             steps {
-               git branch: 'main', url: 'https://github.com/amt-fredrick-amoako/devops.git'
+                git branch: 'main', url: 'https://github.com/amt-fredrick-amoako/devops.git'
             }
         }
-
         stage('Compile') {
-            steps {
-                dir('labs') {
-                    sh "mvn clean compile"
-                }
+            steps{
+            dir('labs'){
+                sh "mvn compile"
             }
-        }
-
-        stage('Build') {
-            steps {
-                dir('labs') {
-                    sh "mvn clean package"
-                }
             }
-        }
 
+        }
         stage('Test') {
             steps {
-                dir('labs') {
+                dir('labs'){
                     sh "mvn test"
                 }
             }
         }
-        stage("Build docker image") {
-            steps{
+        stage('Build') {
+            steps {
+                dir('labs'){
+                    sh "mvn package"
+                }
+            }
+        }
+        stage('Build & Tage Docker Image') {
+            steps {
                 script{
-                    sh "docker rm devopslabs"
-                    sh "docker build -t javalabs/devops ."
-                    sh "docker run --name devopslabs -p 8083:8083 -d javalabs/devops"
+                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
+                        sh "docker build -t fredamoako/devops:latest ."
+                    }
+                }
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                script{
+                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
+                        sh "docker push fredamoako/devops:latest"
+                    }
                 }
             }
         }
