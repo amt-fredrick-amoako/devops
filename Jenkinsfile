@@ -51,5 +51,10 @@ pipeline {
                 }
             }
         }
+        stage('Deploy K8 Clusters'){
+            steps{
+                sh "kubectl apply -f devops.yml"
+            }
+        }
     }
 }
