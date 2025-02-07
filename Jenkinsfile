@@ -56,10 +56,11 @@ pipeline {
                 sh "kubectl apply -f devops.yml"
             }
         }
+    }
 	post {
 		always {
 			echo "Cleaning workspace"
 			cleanWs()
 		}
-	}    }
+	}    
 }
